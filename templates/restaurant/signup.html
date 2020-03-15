@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Restaurant Signup{% endblock %}
+
+<!-- Script Area -->
+{% block script %}{% endblock %}
+
+<!-- Auth Page Title -->
+{% block auth_page_title %}Sign Up{% endblock %}
+
+<!-- Auth Page Body -->
+{% block auth_body %}
+    <!-- Form -->
+    <form method="POST" action="{% url 'uberiina:restaurant-signup' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row form-row">
+            <div class="md-form form-field col-6 form-col">
+                {{ user_form.username }}
+            </div>
+            <div class="md-form form-field col-6 form-col">
+                {{ user_form.email }}
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="md-form form-field col-6 form-col">
+                {{ user_form.last_name }}
+            </div>
+            <div class="md-form form-field col-6 form-col">
+                {{ user_form.first_name }}
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="md-form col-12 form-col"> 
+                {{ user_form.password }}
+            </div>
+            <small>＊＊＊情報漏洩の可能性があるメールアドレスとパスワードの組み合わせの場合、”Google Chrome”に実装されたセキュリティ機能によりセキュリティ通知が表示される場合がございます。</small>
+        </div>
+        
+        <div class="row form-row">
+            <div class="md-form form-field col-6 form-col">
+                {{ restaurant_form.name }}
+            </div>
+            <div class="md-form form-field col-6 form-col">
+                {{ restaurant_form.phone }}
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="md-form col-12 form-col">
+                {{ restaurant_form.address }}
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="col-6 form-col">
+                <button class="btn btn-unique restaurnt-btn" type="submit">Sign Up</button>
+            </div>
+        </div>
+    </form>
+{% endblock auth_body %}

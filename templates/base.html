@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}{% endblock %}</title>
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/vegas.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+  <link rel="stylesheet" href="{% static 'css/slick-theme.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  
+
+  <link href="https://fonts.googleapis.com/css?family=Bitter|Nunito&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Coda+Caption:800|Sriracha|Varela+Round&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://kit.fontawesome.com/5dc2d3a45d.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/3.4.1/jquery-ui.min.js"></script>
+  
+  
+  <script src="{% static 'js/vegas.min.js' %}"></script>
+  <script src="{% static 'js/slick.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+  {% url 'uberiina:home' as home %}
+  {% url 'uberiina:about' as about %}
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand header-title app-name" href="{% url 'uberiina:home' %}" data-aos="fade-right" data-aos-duration="1800">
+          <strong><i class="fas fa-utensils mr-2"></i>うーばぁ・いいなぁ</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item {% if request.path == home %}active{% endif %}" data-aos="fade-right" data-aos-duration="1600">
+              <a class="nav-link px-3" href="{% url 'uberiina:home' %}">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item {% if request.path == about %}active{% endif %}" data-aos="fade-right" data-aos-duration="1400">
+              <a class="nav-link px-3" href="{% url 'uberiina:about' %}">About</a>
+            </li>
+          </ul>
+          {% if request.user.is_authenticated %}
+             <a class="btn home-btn signup-btn" data-aos="fade-up" data-aos-duration="800" href="{% url 'uberiina:restaurant-home' %}">Dashboard</a>
+             <a class="btn home-btn login-btn" data-aos="fade-up" data-aos-duration="1200" href="{% url 'accounts:logout' %}">Loout</a>
+          {% else %}
+            <a class="btn home-btn signup-btn" data-aos="fade-up" data-aos-duration="800" href="{% url 'uberiina:restaurant-signup' %}">Sign-up</a>
+            <a class="btn home-btn login-btn" data-aos="fade-up" data-aos-duration="1200" href="{% url 'accounts:login' %}">Login</a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <section id="main-visual">
+    <div class="container-fluid">
+      {% if request.path == home or request.path == about %}
+        <div class="top-wrapper-contents">
+            <div class="row justify-content-center my-4">
+                <h1 class="main-title {% if request.path == home %}app-name{% endif %} display-2">
+                  {% block page_title %}{% endblock  %}
+                </h1>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="text-center mx-4">
+                  {% block page_sub_title %}{% endblock page_sub_title %}
+                  <a class="scroll-down" href="#"><span></span>Scroll</a>
+                </div>
+            </div>
+        </div>
+      {% else %}
+        <div class="row justify-content-center auth-contents">
+          <div class="col-lg-6 col-lg-offset-4 col-md-6 col-md-offset-4 col-sm-6 col-sm-offset-4">
+            <div class="contents-box card">
+              <div class="contents-header card-header">
+                <h3 class="contents-title text-center text-white" >
+                  {% block auth_page_title %}{% endblock %}
+                </h3>
+              </div>
+              <div class="contents-body card-body px-5">
+                {% block auth_body %}{% endblock auth_body %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+  
+  <!-- Contents-->
+  {% if request.path == home or request.path == about %}
+    {% block page_body %}{% endblock page_body %}
+  {% endif %}
+  
+
+  <!-- Footer -->
+  <footer class="page-footer font-small {% if request.path != home and request.path != about %}fixed-bottom{% endif %}">
+    <div class="upper-footer text-center py-3">
+      <a class="sns-link fa" href=""></a>
+      <a class="sns-link tw" href=""></a>
+      <a class="sns-link in" href=""></a>
+      <a class="sns-link wa" href=""></a>
+    </div>
+    <div class="footer-copyright text-center py-3 special-color-dark">© 2020 Copyright:
+      <a href=""> "Nishi" All Rights Reserved</a>
+      <p class="footer-link">
+        <a href="https://www.freepik.com/free-photos-vectors/design">Design vector created by freepik - www.freepik.com</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scroll Button -->
+  <button class="btn scroll-top m-4"><span></span></button>
+  <script>
+    AOS.init();
+    $(function(){
+      $("#main-visual").vegas({
+        slides: [
+          { src: "{{ MEDIA_URL }}background_04.jpg" },
+          { src: "{{ MEDIA_URL }}background_03.jpg" },
+          { src: "{{ MEDIA_URL }}background_05.jpg" },
+          { src: "{{ MEDIA_URL }}background_01.jpg" },
+          { src: "{{ MEDIA_URL }}background_02.jpg" },
+        ],
+        overlay: "{{ MEDIA_URL }}overlay.png"
+      });
+
+      //スクロールボタンの表示
+      $('.scroll-top').hide();
+      $(window).scroll(function(){
+        if ($(this).scrollTop() > 100) {
+          $('.scroll-top').fadeIn();
+        } else {
+          $('.scroll-top').fadeOut();
+        }
+      });
+
+      //ページトップへのスクロール
+      $('.scroll-top').click(function(){
+        $('html,body').animate({
+          scrollTop : 0,
+        }, 1200);
+      });
+
+      //コンテンツへのスクロールダウン
+      $('.scroll-down').click(function(){
+        var windowHeight = $(window).height();
+        $('html,body').animate({
+          scrollTop : windowHeight - 91,
+        }, 1000);
+      });
+
+      //スクロールによるナビゲーション色の変更とtopWrapperの表示
+      var mainNav = $('#main-nav');
+      var topWrapper = $('.top-wrapper-contents');
+      var topWrapperOffset = topWrapper.offset();
+
+      // ページ途中の画面リロード時にtopWrapperを非表示
+      if (topWrapperOffset.top > 1000) {
+        topWrapper.hide();
+      }
+
+      $(window).scroll(function(){
+        var windowHeight = $(this).height();
+        windowHeight -= 100;
+
+        var scrollTop = $(this).scrollTop();
+        if (scrollTop > windowHeight) {
+          mainNav.animate({backgroundColor: '#263238'}, 100);
+        } else if (scrollTop > windowHeight / 2 - 50) {
+          topWrapper.fadeOut();
+        } else {
+          mainNav.animate({backgroundColor: 'transparent'}, 100);
+          topWrapper.fadeIn();
+        }
+      });
+
+      //スライダー
+      $('.slider').slick({
+        infinite: true,
+        arrows: false, 
+        fade: true, 
+        draggable: false 
+      });
+
+      //スライダーサムネイル
+      $('.slider-thumb').slick({
+        infinite: true, 
+        slidesToShow: 4,
+        focusOnSelect: true, 
+        asNavFor: '.slider', 
+      });
+    });
+  </script>
+
+</body>
+</html>

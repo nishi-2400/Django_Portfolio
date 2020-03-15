@@ -1,0 +1,59 @@
+{% extends 'restaurant-base.html' %}
+{% block title %}Restaurant Order{% endblock %}
+
+<!-- Script Area-->
+{% block script %}{% endblock %}
+
+<!-- Sidebar Area-->
+{% block sidebar %}{% endblock %}
+
+<!-- Page Title-->
+{% block page_title %}Orders{% endblock page_title %}
+
+<!-- Page Body -->
+{% block page_body %}
+    <!-- Order Detail -->
+	<table class="table table-bordered table-striped text-center">
+        <thead class="meal-table-header white-text">
+            <tr>
+                <th scope="col">Order ID</th>
+                <th scope="col">Order Details</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Driver</th>
+                <th scope="col">Address</th>
+                <th scope="col">Total</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>
+                        {% for order_detail in order.order_details.all %}
+                            {{ order_detail.meal.name }} : {{ order_detail.meal.price }} × {{ order_detail.quantity }} = {{ order_detail.sub_total }}円<br>
+                        {% endfor %}
+                    </td>
+                    <td>{{ order.customer }}</td>
+                    <td>{{ order.driver }}</td>
+                    <td>{{ order.address }}</td>
+                    <td>{{ order.total }}</td>
+                    <td>{{ order.get_status_display }}</td>
+                    <td>
+                        {% if order.status == 1 %}
+                            <form method="POST" action="{% url 'uberiina:restaurant-order' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="id" value="{{ order.id }}">
+                                <button class="btn restaurnt-btn btn-light-green">Get Ready!!</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock page_body %}
+
+{% block page %}{% endblock %}

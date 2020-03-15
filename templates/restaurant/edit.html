@@ -1,0 +1,41 @@
+{% extends 'restaurant-base.html' %}
+{% block title %}Restaurant Meal Edit{% endblock %}
+
+<!-- Script Area-->
+{% block script %}{% endblock %}
+
+<!-- Sidebar Area-->
+{% block sidebar %}{% endblock %}
+
+<!-- Page Title-->
+{% block page_title %}Restaurant Meal Edit Form{% endblock page_title %}
+
+<!-- Page Body -->
+{% block page_body %}
+	<form method="POST" action="{% url 'uberiina:restaurant-meal-edit' meal_id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row form-row">
+            <div class="md-form col-8 edit-form-col">
+                {{ meal_form.name.label }}
+                {{ meal_form.name }}
+            </div>
+            <div class="md-form col-8 edit-form-col">
+                {{ meal_form.short_description.label }}
+				{{ meal_form.short_description }}
+            </div>
+            <div class="md-form col-8 edit-form-col">
+                {{ meal_form.price.label }}
+                {{ meal_form.price }}
+            </div>
+            <div class="md-form col-8 edit-form-col">
+                {{ meal_form.image.label }}
+                {{ meal_form.image }}
+            </div>
+        </div>
+        <div class="form-col">
+           <button type="submit" class="btn btn-unique restaurnt-btn">Update</button>
+        </div>
+    </form>
+{% endblock page_body %}
+
+{% block page %}{% endblock %}

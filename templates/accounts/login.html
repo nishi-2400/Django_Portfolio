@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Restaurant Signup{% endblock %}
+
+{% block script %}{% endblock %}
+
+<!-- Auth Page Title -->
+{% block auth_page_title %}Login{% endblock %}
+
+<!-- Auth Page Body -->
+{% block auth_body %}
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+        {% else %}
+            <p>Please login to see this page.</p>
+        {% endif %}
+    {% endif %}
+
+    <!-- Message -->
+    {% if messages %}
+        <div class="message alert alert-success">
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <!-- Login Form -->
+    <form class="text-center" style="color: #757575;" method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            <div class="md-form">
+                {{ field }}
+                {{ field.errors }}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-lg btn-block mb-3 login-btn" >LogIn</button> 
+        <input type="hidden" name="next" value="{{ next }}" />
+        {% comment %} <p>Forget Password?
+            <a href="{% url 'accounts:password_reset' %}">Reset</a>
+        </p> {% endcomment %}
+        <p>Not a member?
+            <a href="{% url 'uberiina:restaurant-signup' %}">Register</a>
+        </p>
+    </form>
+{% endblock auth_body %}

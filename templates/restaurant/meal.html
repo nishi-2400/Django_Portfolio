@@ -1,0 +1,123 @@
+{% extends 'restaurant-base.html' %}
+{% block title %}Restaurant Meal{% endblock %}
+
+<!-- Script Area-->
+{% block script %}{% endblock %}
+
+<!-- Sidebar Area-->
+{% block sidebar %}{% endblock %}
+
+<!-- Page Title-->
+{% block page_title %}Meals{% endblock page_title %}
+
+<!-- Page Body-->
+{% block page_body %}
+    <!-- Message -->
+    {% if messages %}
+        <div class="message alert alert-success">
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    
+    <!-- Search & Add -->
+    <div>
+        <div class="float-left">
+            <form method="POST" action="{% url 'uberiina:restaurant-meal' %}" class="form-inline md-form mr-auto mb-4">
+                {% csrf_token %}
+                <input name="keyword" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-unique restaurnt-btn" type="submit">Search</button>
+            </form>
+        </div>
+        <a class="btn btn-primary restaurnt-btn float-right my-4" href="{% url 'uberiina:restaurant-meal-add' %}">Meal Add</a>
+    </div>
+    
+    <!-- Meal List-->
+    <table class="table table-bordered table-striped text-center">
+        <thead class="meal-table-header white-text">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Image</th>
+                <th scope="col">Price</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for meal in meal_page %}
+                <tr class="target-meal">
+                    <td class="meal-id">{{ meal.id }}</td>
+                    <td class="meal-name">{{ meal.name }}</td>
+                    <td class="meal-short-description"_>{{ meal.short_description }}</td>
+                    <td class="meal-img">
+                        <img class="rounded meal-page-img" src="{{ MEDIA_URL }}{{ meal.image }}" width="100%" height="">
+                    </td>
+                    <td class="meal-price">{{ meal.price }}</td>
+                    <td>
+                        <a class="btn btn-warning restaurnt-btn" href="{% url 'uberiina:restaurant-meal-edit' meal.id %}">Edit</a>
+                    </td>
+                    <td class="delete-btn">
+                        <a type="button" class="btn btn-danger restaurnt-btn meal-delete-btn" data-toggle="modal" data-target="#mealDeleteConfirm">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination pg-blue justify-content-center">
+            {% if meal_page.has_previous %}
+                <li class="page-item">
+                    <a href="{% url 'uberiina:restaurant-meal' %}" class="page-link">First</a>
+                </li>
+                <li class="page-item">
+                    <a href="{% url 'uberiina:restaurant-meal' %}?page={{ meal_page.previous_page_number }}" class="page-link">&laquo;Prev</a>
+                </li>
+            {% endif %}
+            {% if meal_page.has_next %}
+                <li class="page-item">
+                     <a href="{% url 'uberiina:restaurant-meal' %}?page={{ meal_page.next_page_number }}" class="page-link">Next</a>
+                </li>
+                <li class="page-item">
+                    <a href="{% url 'uberiina:restaurant-meal' %}?page={{ meal_page.paginator.num_pages }}" class="page-link">Last</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <!-- Delete Contfirm Modal -->
+    <div class="modal fade" id="mealDeleteConfirm" tabindex="-1" role="dialog" aria-labelledby="mealDeleteConfirmLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header delete-header">
+                    <h5 class="modal-title text-white" id="mealDeleteConfirmLabel">Meal Delete</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>下記のデータ削除しますか？</p>
+                    <p><img class="rounded modal-meal-img-url" src="" width="100%" height=""></p>
+                    <h4 class="delete-item">Name</h4>
+                    <p class="modal-meal-name"></p>
+                    <h4 class="delete-item">Description</h4>
+                    <p class="modal-meal-short-description"></p>
+                    <h4 class="delete-item">Price</h4>
+                    <p class="modal-meal-price"></p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-danger modal-meal-delete" href="">削除</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock page_body %}
+
+  

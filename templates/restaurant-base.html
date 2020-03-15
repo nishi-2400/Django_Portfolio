@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bitter|Nunito&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5dc2d3a45d.js" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <script>
+      $(function(){
+        // Order Notification
+        var now = new Date();
+        setInterval(function(){
+          $.ajax({
+            url: '/api/restaurant/order/notification/' + now.toISOString() + '/',
+            method: 'GET',
+            success: function(data) {
+              if (data['notification'] === 0) {
+                $('#badge').text('');
+                console.log('Notification:0')
+              } else {
+                $('#badge').text('New :' + data['notification']);
+              }
+            }
+          });
+        }, 3000)
+
+        // Meal Delete Modal
+        $(".meal-delete-btn").click(function(){
+          // Media Delete Url
+          var media_delete_url = "./meal/delete/"
+          // Delete Target
+          var target_meal = $(this).parent('.delete-btn');
+
+          // Target Meal Data
+          var meal_id = target_meal.siblings('td.meal-id').text();
+          var meal_name = target_meal.siblings(".meal-name").text();
+          var meal_short_description = target_meal.siblings(".meal-short-description").text();
+          var meal_img_url = target_meal.siblings(".meal-img").children('img').attr('src');
+          var meal_price = target_meal.siblings(".meal-price").text();
+          var meal_delete_url = media_delete_url + meal_id;
+        
+          // Change Text In Modal
+          $(".modal-meal-name").text(meal_name);
+          $(".modal-meal-short-description").text(meal_short_description);
+          $(".modal-meal-img-url").attr('src', meal_img_url);
+          $(".modal-meal-price").text(meal_price);
+          $(".modal-meal-delete").attr('href', meal_delete_url);
+        });  
+      });
+    </script>
+    {% block script %}
+    {% endblock %}
+  </head>
+
+  <body id="dashboard">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2">
+          <!-- Accoount Area -->
+          <div class="text-center mt-4">
+            <p class="restaurant-home pb-2 mb-4">
+              <a href="{% url 'uberiina:home' %}">
+                <strong class="app-name"><i class="fas fa-utensils mr-2"></i>うーばぁ・いいなぁ</strong>
+              </a>
+            </p>
+            <p><a href="{% url 'uberiina:restaurant-home' %}"><img class="rounded restaurant-logo" src="{{ MEDIA_URL }}{{ request.user.restaurant.logo }}" width="" height=""></a></p>
+            <h2 class="restaurant-name my-3">{{ request.user.restaurant }}</h2>
+            <p class="">Restaurant ID: {{ request.user.restaurant.id }}</a></p>
+            <p class="">Account: <a href="{% url 'uberiina:restaurant-account' %}">{{ request.user }}</a></p>
+            <a class="btn btn-indigo restaurnt-btn mb-3"href="{% url 'logout' %}"><i class="fas fa-sign-out-alt mr-2 pr-2"></i>Logout</a>
+          </div>
+
+          <!-- Navigation -->
+          <div class="menu">       
+            <h3 class="text-center nav-title">Menu</h3>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a href="{% url 'uberiina:restaurant-home' %}" class="nav-link restaurant-link">
+                  <i class="fas fa-home mr-4 pr-3"></i>
+                  Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'uberiina:restaurant-account' %}" class="nav-link restaurant-link">
+                  <i class="fas fa-user-circle mr-5"></i>
+                  Account
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'uberiina:restaurant-meal'%}" class="nav-link restaurant-link">
+                  <i class="fas fa-utensils mr-5"></i>
+                  Meal
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'uberiina:restaurant-meal-add' %}" class="nav-link restaurant-link">
+                <i class="fas fa-plus-square mr-5"></i>
+                  Meal Add
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'uberiina:restaurant-order' %}" class="nav-link restaurant-link">
+                  <i class="fas fa-book-open mr-5"></i>
+                  Order
+                  <span id="badge" class="badge badge-danger ml-5"></span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'uberiina:restaurant-report' %}" class="nav-link restaurant-link">
+                  <i class="fas fa-chart-line mr-5"></i>
+                  Report
+                </a>
+              </li>
+            </ul>
+          </div>
+          {% block sidebar %}
+          {% endblock %}
+        </div>
+
+        <!-- Dashboard Contents Area -->
+        <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 dashboard-contents mt-4">
+          <div class="contents-box">
+            <div class="contents-header py-1">
+              <h2 class="text-center">{% block page_title %}{% endblock %}</h2>
+            </div>
+            <div class="contents-body m-4">
+              {% block page_body %}{% endblock  %}
+            </div>
+          </div>
+          {% block page %}{% endblock %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

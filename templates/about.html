@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock %}
+
+<!-- Script Area-->
+{% block script %}{% endblock %}
+
+<!-- Page Title-->
+{% block page_title %}About{% endblock page_title %}
+
+{% block page_sub_title %}
+  <h3 class="display-5 my-4">Thank you for your visit!</h3>
+  <p>Hope this page helps you to learn more about me and this application.</p>
+{% endblock page_sub_title %}
+
+<!-- Page Body -->
+{% block page_body %}
+<section id="about">
+    <div class="container my-4">
+        <h2 class="about-heading my-4 center-align">About Me</h2>
+        <div class="row justify-content-center about-me my-4">
+            <div class="col-12">
+                <ul class="nav nav-tabs md-tabs" id="myTabMD" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab-md" data-toggle="tab" href="#study-md" role="tab" aria-controls="home-md"
+                            aria-selected="true">学習内容</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab-md" data-toggle="tab" href="#career-md" role="tab" aria-controls="profile-md"
+                            aria-selected="false">経歴</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab-md" data-toggle="tab" href="#certification-md" role="tab" aria-controls="contact-md"
+                            aria-selected="false">自己PR/資格など</a>
+                    </li>
+                </ul>
+                <div class="tab-content card pt-4" id="myTabContentMD">
+                    <div class="tab-pane fade show active" id="study-md" role="tabpanel" aria-labelledby="home-tab-md">
+                        <div class="about-tab px-4">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">学習内容</th>
+                                        <th scope="col">学習状況</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>HTML / CSS</td>
+                                        <td colspan="2">HTML/CSSの基本を理解。<br>基本的なBootstrap4の使いWebサイトを作成することができる。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Javascript / jQuery / Vue.js</td>
+                                        <td colspan="2">Javascriptの基本構文を理解。<br>jQueryによるDOM操作、アニメーション実装、Ajaxによる非同期通信することができる。<br>Vue.jsの入門書程度の内容を理解。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PHP / Laravel / WordPress</td>
+                                        <td colspan="2">PHPの基本構文を理解。<br>Laravelの基礎を理解し、認証、CRUD処理、メール送信機能、非同期通信、簡単なToDoアプリや掲示板アプリを作成することができる。<br>静的なサイトのWordPress化ができる。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Python / Django</td>
+                                        <td colspan="2">Pythonの基本構文を理解。<br>Djangoの基礎を理解し、認証、CRUD処理、メール送信機能、”django-rest-framework(*以下。”DRF”と表記)"してAPI機能実装、スマホアプリとの連携、Herokuへのデプロイなどができる。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Swift</td>
+                                        <td colspan="2">Swiftの基本構文を理解。Xcodeの基本的な使い方を理解し、簡単なアプリ（メモアプリや外部APIを利用した検索アプリなど）を作成、”CocoaPods”によるライブラリ追加・管理、”Alamofire”や”SwiftyJsonを利用しWebアプリとの連携ができる。
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Git / GitHub</td>
+                                        <td colspan="2">基本的なGitコマンドを使い、GitHubによるソースコードのバージョン管理ができる。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Docker</td>
+                                        <td colspan="2">初心者向けの書籍で学習中。</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="career-md" role="tabpanel" aria-labelledby="profile-tab-md">
+                        <div class="about-tab px-4">
+                            <h5 class="about-contents-heading mb-3">経歴</h5>
+                            <p>北海道札幌市出身。札幌市内の高校を卒業し、神奈川県内の私立大学に進学。専攻は環境社会学。</p>
+                            <p>大学卒業後、アイルランドに１年間の語学留学。在学中にケンブリッジ英検FCEに合格。その後、カナダのカフェで半年ほど勤務。</p>
+                            <p>帰国後、神奈川県内の輸入商社で営業・事務を担当。新規開拓・ルート営業から貿易事務・輸入商品のドキュメント翻訳や通訳などを担当。</p>
+                            <p>業務に携わる中で、自分で輸入販売をしてみたいという想いが膨らみ、退職。より時間が取れる仕事に転職（製造業）し、個人事業で輸入商品のネット販売を開始。気になる分野の学習に時間を充てる。</p>
+                            <p>ネット販売の業務効率化について、プログラミングによるWebサイトの作成や作業の簡略化/自動化に惹かれ、独学で学習開始。<p>
+                            <p>ネット販売の売上が思うように伸びず、個人事業を断念。Webプログラマーを目指し、オンラインスクールでの学習開始。<p>
+                            <p>現在、31歳。製造業（自動車パーツ製造）に勤務し、転職活動中。</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="certification-md" role="tabpanel" aria-labelledby="contact-tab-md">
+                        <div class="about-tab px-4">
+                            <h5 class="about-contents-heading mb-3">自己PR</h5>
+                            <p>「何事にも積極的に取り組み、継続的に努力する」</p>
+                            <p>
+                                大学卒業後に不得意であった英語学習に真剣に取り組んだ経験を通じ、継続した努力の重要性を学びました。
+                                プログラミングの学習においても、学習時間の確保のためにより時間を作れる仕事に転職し、
+                                日ごろWebサービスを利用する中で参考になる機能を見つけ・学習し・実装してみるなど、
+                                積極的に学習することで身に着けた知識とスキルをプログラミングスクールの担当インストラクターの方やスタッフの方に高く評価して頂くことができました。
+                                この強みを以て、積極的に業務に取り組み、継続的に努力することで一早く業務に貢献することができる人材になれるよう努めることは言うまでもなく、
+                                身に着けた英語力を活かして外国人向けのサービスの展開などにおいて貢献することができると考えています。
+                            </p>
+                            <h5 class="about-contents-heading mb-3">語学</h5>
+                            <p>英語：ケンブリッジ英検FCE(TOEIC800 ~ 900・英検準１級程度)</p>
+                            <p>イタリア語：旅行で使える程度</p>
+                            <h5 class="about-contents-heading mb-3">IT</h5>
+                            <p>基本情報技術者試験(2020年4月19日受験予定)</p>
+                            <h5 class="about-contents-heading mb-3">その他</h5>
+                            <p>普通自動車免許（MT)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-4">
+        <h2 class="about-heading mb-4">Portfolio</h2>
+        <div class="row justify-content-center my-4">
+            <div class="col-12">
+                <h5 class="about-contents-heading mb-3">うーばぁ・いいなぁ</h5>
+                <p>”UberEats"を参考にして作成したフードデリバリーサービスWebアプリケーション。レストランのオーナーを想定ユーザーとして、認証機能、料理情報管理のCRUD機能、オーダーの管理、週間ビジネスリポートを扱うダッシュボード機能を提供。</p>
+                <p>"DRF"を利用したAPIによる、カスタマー・ドライバーを想定ユーザーとした、iOSアプリ"うーばぁ・いいなぁ もばいる(作成中）"との連携(APIの動作確認は"Postman"で代用)、レストラン・料理情報の提供、オーダー情報送信機能、ドライバーの現在位置情報管理、
+                    ”DRF Social OAuth2”を利用したFacebookAPIによるサインアップ・ログイン機能などを実装。</p>
+            </div>
+        </div>
+        <div class="row justify-content-center my-4">
+            <div class="col-12">
+                <h5 class="about-contents-heading mb-3">苦労した点</h5>
+                <p>”DRF”利用したAPI機能実装と”DRF Social OAuth2”を利用したFacebookソーシャルサインアップ・ログイン機能の実装。</p>
+                <p>”うーばぁ・いいなぁ”は初めてAPI機能とFacebookソーシャルサインアップ・ログイン機能を実装したアプリケーションになります。
+                    始めのうちは、日本語で書かれたサイトを参考にしていましたが、情報が古いものであったり、そもそも情報量が少ないことから、
+                    APIそのものや”DRF”と”DRF Social OAuth2”の役割・機能や認証フローを十分に理解することなく作業していました。
+                </p>
+                <p>
+                    そのため、FacebookAPIが発行するアクセストークンと”DRF Social OAuth2”が発行するアクセストークンを混同していたり、
+                    トークン以外の必要なパラメータが不足している状態でログインリクエストを送信したり、送信先を間違えたり、と何度も”failed”の戻り値を受け取り作業が思うように進まず苦労しました。
+                </p>
+                <p>
+                    そこで、日本語で書かれた情報だけを頼りにせずに英語で書かれた”Stack OverFlow”の情報や”DRF”・”DRF Social OAuth2”の公式ドキュメントを読み込むことで、
+                    少しずつ理解度が増し、各種機能の挙動や認証フローが理解できるようになり、これらのライブラリを扱えるようになりました。
+                </p>
+                <p>
+                    この経験を通じ、各種ライブラリに関する知識やスキルだけではなく、英語で書かれた情報や公式ドキュメントの重要性、
+                    駆け出しのプログラマーとして、自分で問題を解決する力を身につけることができたと思っています。
+                </P>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center my-4">
+            <div class="col-6">
+                <h5 class="about-contents-heading mb-3">使用言語</h5>
+                <p>HTML, CSS(Bootstrap4), Javascript(jQuery), Python(Django)</p>
+            </div>
+            <div class="col-6">
+                <h5 class="about-contents-heading mb-3">イメージ</h4>
+                <ul class="slider">
+                    <li>
+                        <img class="slider-img rounded" src="{{ MEDIA_URL }}slider_01.png" alt="image01">
+                    </li>
+                    <li>
+                        <img class="slider-img rounded" src="{{ MEDIA_URL }}slider_02.png" alt="image01">
+                    </li>
+                </ul>
+                <div class="slider-thumb mb-3">
+                    <div class="mx-2"><img class="rounded w-100" src="{{ MEDIA_URL }}slider_01.png" alt="image01"></div>
+                    <div class="mx-2"><img class="rounded w-100" src="{{ MEDIA_URL }}slider_02.png" alt="image01"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-4">
+        <h2 class="about-heading mb-4">Images & Illustrations</h2>
+        <div class="row justify-content-center my-4">
+            <div class="col-12">
+                <p>このアプリケーションで使用している画像は、全て下記のサイトで提供されているフリー素材を使用しています。</p>
+                <p>Freepik : 
+                    <a href="https://www.freepik.com/free-photos-vectors/design">Design vector created by freepik - www.freepik.com</a>
+                </p>
+                <p>Unsplash : 
+                    <a href="https://unsplash.com/">Unsplash - https://unsplash.com/</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'restaurant-base.html' %}
+{% block title %}Restaurant Account{% endblock %}
+
+<!-- Script Area-->
+{% block script %}{% endblock %}
+
+<!-- Sidebar Area-->
+{% block sidebar %}{% endblock %}
+
+<!-- Page Title-->
+{% block page_title %}Account Information{% endblock page_title %}
+
+<!-- Page Body -->
+{% block page_body %}
+    <!-- Message -->
+    {% if messages %}
+        <div class="message alert alert-success">
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+	{% endif %}
+
+    <!-- Form -->
+    <form method="POST" action="{% url 'uberiina:restaurant-account' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row form-row">
+            <div class="md-form form-field col-6 account-form-col">
+                {{ user_form.username.label }}
+                {{ user_form.username }}
+            </div>
+            <div class="md-form form-field col-6 account-form-col">
+                {{ user_form.email.label }}
+                {{ user_form.email}}
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="md-form form-field col-6 account-form-col">
+                {{ user_form.last_name.label }}
+                {{ user_form.last_name }}
+            </div>
+            <div class="md-form form-field col-6 account-form-col">
+                {{ user_form.first_name.label }}
+                {{ user_form.first_name }}
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="md-form form-field col-6 account-form-col">
+                {{ restaurant_form.name.label }}
+                {{ restaurant_form.name }}
+            </div>
+            <div class="md-form form-field col-6 account-form-col">
+                {{ restaurant_form.phone.label }}
+                {{ restaurant_form.phone }}
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="md-form col-12 account-form-col">
+                {{ restaurant_form.address.label }}
+                {{ restaurant_form.address }}
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="col-6 account-form-col">
+                {{ restaurant_form.logo.label }}
+                {{ restaurant_form.logo }}
+            </div>
+        </div>
+        <div class="col-6 form-col">
+            <p>パスワード変更はこちら：<a href="{% url 'accounts:password_change' %}">Password Change</a></p>
+        </div>
+        <div class="col-6 form-col">
+            <button class="btn btn-unique restaurnt-btn" type="submit">Update</button>
+        </div>
+    </form>
+{% endblock page_body %}
+
+{% block page %}{% endblock %}

@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+<!-- Script Area-->
+{% block script %}{% endblock %}
+
+<!-- Page Title-->
+{% block page_title %}
+  <i class="fas fa-utensils mr-4"></i>うーばぁ・いいなぁ
+{% endblock page_title %}
+
+<!-- Page Body -->
+{% block page_sub_title %}
+  <h3 class="display-5 my-4">24/7 Food Delivery Service</h3>
+  <p>Wherever you are, fresh food available!!!</p>
+{% endblock page_sub_title %}
+
+{% block page_body %}
+<section id="home-contents">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="second-heading">
+          <h2 class="display-4">What is "<span class="app-name">うーばぁ・いいなぁ</span>" ?</h2>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-6 py-3">
+          <img class="w-100 py-3" data-aos="zoom-in" src="{{ MEDIA_URL }}service_01.jpg" alt="">
+        </div>
+        <div class="col-6 py-3">
+          <h3 class="display-3 mb-4 third-heading">Food Delivery Service</h3>
+          <p>We have a wide range of foods available for delivery from some of the best restaurants.</p>
+          <p>Use our "うーばぁ・いいなぁ もばいる(iOS Application)" to quickly find restaurants around you and have your favorite meal delivered directly to you.</p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-6 py-3">
+          <h3 class="display-3 mb-4 third-heading">Manage Your Business</h3>
+          <p>"Dashboard" enables restaurant owners to manage orders and deals.</p>
+          <p>Easy to search/add/edit/delete meals on "Menu" page.</p>
+          <p>You receive order notification and check orders on "Orders" page</p>
+          <p>"Reports" page gives you an overview of your weekly business data.</p>
+        </div>
+        <div class="col-6 py-3">
+          <img class="w-100 py-3" data-aos="zoom-in" src="{{ MEDIA_URL }}restaurant-web.jpg" alt="">
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-6 py-3">
+          <img class="w-100 py-3" data-aos="zoom-in" src="{{ MEDIA_URL }}delivery_01.jpg" alt="">
+        </div>
+        <div class="col-6 py-3">
+          <h3 class="display-3 mb-4 third-heading">Interested in earning cash?</h3>
+          <p>If you want to make money in your spare time, sign up as driver on "うーばぁ・いいなぁ もばいる(iOS Application)"</p>
+          <p>"うーばぁ・いいなぁ もばいる(iOS Application)" app gives you GPS Map System that enables drivers to deliver meals to costomer easily</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to use-->
+  <section id="how-contents">
+    <div class="container-fluid py-5">
+      <div class="row justify-content-center">
+        <div class="second-heading mb-3">
+          <h2 class="text-center display-4">How To Use</h2>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-4 text-center">
+          <h3 class="text-center">1, Search & Order What You Want!</h3>
+          <img class="how-img rounded"src="{{ MEDIA_URL }}order.jpg">
+          <p>Search for your favorite Restaurants & Foods on "うーばぁ・いいなぁ もばいる(iOS Application)"</p>
+        </div>
+
+        <div class="col-4 text-center">
+          <h3 class="text-center">2, Check Order & Cooking</h3>
+          <img class="how-img rounded"src="{{ MEDIA_URL }}cooking.jpg">
+          <p>Easy to manage orders & deals on "Dashbord"!</p>
+        </div>
+
+        <div class="col-4 text-center">
+          <h3 class="text-center">3, Delivered Wherever You Are!</h3>
+          <img class="how-img rounded" src="{{ MEDIA_URL }}delivery.jpg">
+          <p>All you need to do is to stay put at home!!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sign Up -->
+  <section id="signup-contents">
+    <div class="container-fluid py-5">
+      <div class="row justify-content-center">
+        <div class="second-heading mb-3">
+          <h2 class="text-center display-4">Let's Join Us!</h2>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-3 col-sm-7 card m-3 text-center" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
+          <div class="card-header signup-card">
+            <h3 class="text-center text-white">Restaurant</h3>
+          </div>
+
+          <div class="card-body">
+            <p>
+              <img class="signup-img" src="{{ MEDIA_URL }}restaurant-signup.jpg">
+            <p>
+            <div class="signup-text">
+            {% if request.user.is_authenticated %}
+              <p><a class="btn home-btn signup-btn" href="{% url 'uberiina:restaurant-home' %}">Dashboard</a></p>
+            {% else %}
+              <p><a class="btn home-btn signup-btn" href="{% url 'uberiina:restaurant-signup' %}">Sign-up</a></p>
+            {% endif %}
+              <p>Easy to manage orders & deals on "Dashbord"!</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-sm-7 card m-3 text-center" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1600">
+          <div class="card-header signup-card">
+            <h3 class="text-center text-white">Driver</h3>
+          </div>
+
+          <div class="card-body">
+            <p>
+              <img class="signup-img" src="{{ MEDIA_URL }}driver-signup.jpg">
+            </p>
+            <div class="signup-text">
+              <p><a class="btn home-btn btn-indigo" href="{% url 'accounts:login' %}">Download</a></p>
+              <p>Easy sign-up as a driver on "うーばぁ・いいなぁ もばいる(iOS Application)"</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-sm-7 card m-3 text-center" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2200">
+          <div class="card-header signup-card">
+            <h3 class="text-center text-white">Customer</h3>
+          </div>
+
+          <div class="card-body">
+            <p>
+              <img class="signup-img" src="{{ MEDIA_URL }}customer-signup.jpg">
+            </p>
+            <div class="signup-text">
+              <p><a class="btn home-btn btn-indigo" href="{% url 'accounts:login' %}">Download</a></p>
+              <p>Easy sign-up as a customer "うーばぁ・いいなぁ もばいる(iOS Application)"</p>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+  </section>
+{% endblock page_body %}
+
+
+

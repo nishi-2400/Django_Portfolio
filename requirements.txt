@@ -1,0 +1,12 @@
+Django==3.0.2
+gunicorn==19.6.0
+Pillow==3.3.0
+django-rest-framework-social-oauth2==1.1.0 
+django-bootstrap3==12.0.3 
+django-heroku==0.3.1
+social-auth-app-django==3.1.0
+stripe==2.41.1
+python-social-auth==0.3.6
+whitenoise==5.0.1
+# django-storages==1.9.1
+# boto3==1.12.13

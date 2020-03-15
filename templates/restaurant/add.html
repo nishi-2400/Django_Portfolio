@@ -1,0 +1,53 @@
+{% extends 'restaurant-base.html' %}
+{% block title %}Restaurant Meal Add{% endblock %}
+
+<!-- Script Area-->
+{% block script %}{% endblock %}
+
+<!-- Sidebar Area-->
+{% block sidebar %}{% endblock %}
+
+<!-- Page Title-->
+{% block page_title %}Meal Add Form{% endblock page_title %}
+
+<!-- Page Body-->
+{% block page_body %}
+	<!-- Message -->
+	{% if messages %}
+		<div class="message alert alert-success">
+			<ul class="messages">
+				{% for message in messages %}
+					<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+
+	<!-- Form -->
+    <form method="POST" action="{% url 'uberiina:restaurant-meal-add' %}" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div class="row form-row">
+            <div class="md-form  col-8 add-form-col">
+                {{ meal_form.name.label }}
+                {{ meal_form.name }}
+            </div>
+            <div class="md-form col-8 add-form-col">
+                {{ meal_form.short_description.label }}
+				{{ meal_form.short_description }}
+            </div>
+            <div class="md-form col-8 add-form-col">
+                {{ meal_form.price.label }}
+                {{ meal_form.price }}
+            </div>
+            <div class="col-8 add-form-col">
+                {{ meal_form.image.label }}
+                {{ meal_form.image }}
+            </div>
+        </div>
+        <div class="form-col">
+           <button type="submit" class="btn btn-unique restaurnt-btn">Add</button>
+        </div>
+	</form>
+{% endblock page_body %}
+
+{% block page %}{% endblock %}

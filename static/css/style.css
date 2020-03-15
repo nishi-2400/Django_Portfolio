@@ -1,0 +1,613 @@
+/*
+＊＊＊＊＊＊＊＊＊＊
+Common
+＊＊＊＊＊＊＊＊＊＊
+*/
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: 'Nunito', sans-serif;
+}
+
+header {
+    width: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+.home-btn, .auth-btn, .restaurnt-btn {
+    width: 160px;
+}
+
+.card {
+    padding: 0;
+
+}
+
+.table td {
+    vertical-align: center;
+}
+
+
+/*
+＊＊＊＊＊＊＊＊＊＊
+base.html
+＊＊＊＊＊＊＊＊＊＊
+*/
+#main-nav {
+    width: 100%;
+    background-color: transparent;
+    padding: 16px 0 16px;
+}
+
+a.header-title {
+    letter-spacing: 3px;
+    text-align: center;
+    border-bottom: solid 3px skyblue;
+    position: relative;
+}
+
+a.header-title:after {
+    position: absolute;
+    content: " ";
+    display: block;
+    border-bottom: solid 3px #ffc778;
+    bottom: -3px;
+    width: 30%;
+}
+
+.app-name {
+    font-family: "Hannari";
+}
+
+.login-btn {
+    color: white;
+    background-color: #F49F0D;
+}
+
+.login-btn:hover {
+    background-color: white;
+}
+
+.signup-btn {
+    color: white;
+    background-color: skyblue;
+}
+
+.signup-btn:hover {
+    background-color: white;
+}
+
+#main-visual {
+    height: 100%;
+    width: 100%;
+    color: white;
+}
+
+.top-wrapper-contents {
+    position: fixed;
+    width: 80%;
+    height: 30%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+.main-title {
+    letter-spacing: 0.3rem;
+    border-bottom: solid 5px skyblue;
+    position: relative;
+}
+
+.main-title:after {
+    position: absolute;
+    content: " ";
+    display: block;
+    border-bottom: solid 5px #ffc778;
+    bottom: -5px;
+    width: 30%;
+}
+
+a.scroll-down {
+    display: inline-block;
+    color: white;
+    margin-top: 90px;
+}
+
+a.scroll-down span {
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    width: 46px;
+    height: 46px;
+    margin-left: -23px;
+    border: 1px solid #fff;
+    border-radius: 100%;
+    box-sizing: border-box;
+}
+a.scroll-down span::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: '';
+    width: 16px;
+    height: 16px;
+    margin: -12px 0 0 -8px;
+    border-left: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    box-sizing: border-box;
+}
+
+a.scroll-down span::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    content: '';
+    width: 44px;
+    height: 44px;
+    box-shadow: 0 0 0 0 rgba(255,255,255,.1);
+    border-radius: 100%;
+    opacity: 0;
+    -webkit-animation: sdb 3s infinite;
+    animation: sdb 3s infinite;
+    box-sizing: border-box;
+}
+
+@-webkit-keyframes sdb {
+    0% {
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    60% {
+      box-shadow: 0 0 0 60px rgba(255,255,255,.1);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+}
+
+@keyframes sdb {
+    0% {
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    60% {
+      box-shadow: 0 0 0 60px rgba(255,255,255,.1);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+}
+
+.auth-contents {
+    margin: 100px 0;
+}
+
+.contents-box {
+    height: 100%;
+    background-color: white;
+    border: 2px solid #0f4c75;
+}
+
+.contents-body {
+    color: black;
+}
+
+.contents-header {
+    color: white;
+    background-color: #0f4c75;
+    text-align: center;
+}
+
+.upper-footer {
+    background-color: #F49F0D;
+}
+
+a.sns-link {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 0 15px;
+}
+
+a.sns-link:hover {
+    opacity: 0.6;
+    transform: scale(1.4);
+    transition: all 0.3s;
+}
+
+a.sns-link.fa {
+    /* background: url(/media/sns_fa1.svg) no-repeat center center; */
+    background: url(https://uberiina.s3-ap-southeast-1.amazonaws.com/media/sns_fa1.svg) no-repeat center center;
+    background-size: 100% auto;
+}
+
+a.sns-link.tw {
+    /* background: url(/media/sns_tw1.svg) no-repeat center center; */
+    background: url(https://uberiina.s3-ap-southeast-1.amazonaws.com/media/sns_tw1.svg) no-repeat center center;
+    background-size: 100% auto;
+}
+
+a.sns-link.in {
+    background: url(https://uberiina.s3-ap-southeast-1.amazonaws.com/media/sns_in1.svg) no-repeat center center;
+    /* background: url(/media/sns_in1.svg) no-repeat center center; */
+    background-size: 100% auto;
+}
+
+a.sns-link.wa {
+    background: url(https://uberiina.s3-ap-southeast-1.amazonaws.com/media/sns_wa1.svg) no-repeat center center;
+    /* background: url(/media/sns_wa1.svg) no-repeat center center; */
+    background-size: 100% auto;
+}
+
+.footer-link {
+    margin: 0;
+}
+
+
+/* 
+＊＊＊＊＊＊＊＊＊＊
+home.html
+＊＊＊＊＊＊＊＊＊＊
+*/
+#home-contents {
+    background-color: #F49F0D;
+}
+
+.second-heading {
+    position: relative;
+    display: inline-block;
+    padding: 0 120px;
+}
+
+.second-heading:before, .second-heading:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+    width: 100px;
+    height: 1px;
+    background-color: black;
+}
+  
+.second-heading:before {
+    left:0;
+}
+
+.second-heading:after {
+    right: 0;
+}
+
+
+.third-heading:first-letter {
+    font-size: 1.5em;
+    color: #C40018;
+}
+
+#how-contents {
+    background-color: #f0efef;
+}
+
+.how-img {
+    width: 95%;
+    height: 85%;
+    object-fit: cover;
+    margin: 10px 0 10px;
+}
+
+#signup-contents {
+    /* background-image: url('/media/bg_wall1.png'); */
+    background-image: url('https://uberiina.s3-ap-southeast-1.amazonaws.com/media/bg_wall1.png');
+}
+
+.signup-card {
+    background-color: #0f4c75;
+}
+
+
+img.signup-img {
+    width: 100%;
+    height: 250px;
+    /* height: 100%; */
+    object-fit: cover;
+}
+
+
+.scroll-top {
+    color: white;
+    cursor: pointer;
+    background-color: #001B57;
+    position: fixed;
+    width: 75px;
+    height: 75px;
+    bottom: 0;
+    right: 0;
+}
+
+.scroll-top span {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    width: 46px;
+    height: 46px;
+    margin-left: -23px;
+    border-radius: 100%;
+    box-sizing: border-box;
+}
+
+.scroll-top span::after {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    content: '';
+    width: 16px;
+    height: 16px;
+    margin: -12px 0 0 -8px;
+    border-left: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+    box-sizing: border-box;
+}
+
+.scroll-top:hover {
+    color: black;
+    opacity: 0.7;
+    transform: scale(1.2);
+    transition: all 0.5s;
+}
+
+
+/* 
+＊＊＊＊＊＊＊＊＊＊
+about.html
+＊＊＊＊＊＊＊＊＊＊
+ */
+
+#about {
+    /* background-image: url('/media/bg_wall1.png'); */
+    background-image: url('https://uberiina.s3-ap-southeast-1.amazonaws.com/media/bg_wall1.png');
+}
+
+h2.about-heading {
+    position: relative;
+    padding-left: 30px;
+}
+
+h2.about-heading:before {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 15px transparent;
+    border-bottom: solid 15px rgb(119, 195, 223);
+}
+
+h2.about-heading:after {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 10px;
+    width: 100%;
+    border-bottom: solid 3px rgb(119, 195, 223);
+}
+
+.about-me {
+    height: 700px;
+}
+
+h4.about-sub-heading {
+    text-align: center;
+    position: relative;
+    padding: 0 100px;
+    margin: 30px 0;
+}
+
+h4.about-sub-heading:before, h4.about-sub-heading:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+    width: 70px;
+    height: 1px;
+    background-color: black;
+}
+  
+h4.about-sub-heading:before {
+    left:0;
+}
+
+h4.about-sub-heading:after {
+    right: 0;
+}
+
+h5.about-contents-heading {
+    padding: 0.5em;/*文字周りの余白*/
+    color: #494949;/*文字色*/
+    background: #fffaf4;/*背景色*/
+    border-left: solid 5px #ffaf58;/*左線（実線 太さ 色）*/
+}
+
+.slider {
+    padding-left: 0;
+}
+
+.slider-img {
+    width: 100%;
+    object-fit: cover;
+}
+
+
+/*
+＊＊＊＊＊＊＊＊＊＊
+Restaurant / restaurant-base.html
+＊＊＊＊＊＊＊＊＊＊
+*/
+body#dashboard {
+    /* background-image: url('/media/bg_wall1.png'); */
+    background-image: url('https://uberiina.s3-ap-southeast-1.amazonaws.com/media/bg_wall1.png');
+}
+
+.restaurant-home {
+    letter-spacing: 3px;
+    border-bottom: solid 3px skyblue;
+    position: relative;
+}
+
+.restaurant-home:after {
+    position: absolute;
+    content: " ";
+    display: block;
+    border-bottom: solid 3px #ffc778;
+    bottom: -3px;
+    width: 30%;
+}
+
+.restaurant-home a strong {
+    color: #0f4c75;
+}
+
+.restaurant-logo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.nav-title {
+    font-family: 'Bitter', serif;
+    font-style: italic;
+}
+
+.restaurant-link {
+    font-style: italic;
+    color: black;
+    border-bottom: 1px dotted;
+}
+
+.nav-link:hover {
+    color: white;
+    background-color: #0f4c75;
+}
+
+.restaurant-name {
+    font-family: 'Bitter', serif;
+    font-style: italic;
+    letter-spacing: 5px;
+}
+
+.form-field {
+    width: 40%;
+}
+
+.form-row {
+    width: 100%;
+}
+
+.form-col {
+    margin: 10px 0;
+}
+
+.account-form-col, .add-form-col, .edit-form-col {
+    margin: 20px 0;
+}
+
+.meal-table-header {
+    background-color: #3282b8;
+}
+
+.meal-page-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.delete-header {
+    background-color: #0f4c75;
+}
+
+.delete-item {
+    color: white;
+    background-color: #3282b8;
+    padding-left: 10px;
+}
+
+.contents-child-header {
+    color: white;
+    background-color: #3282b8;
+}
+
+.contents-box {
+    height: 100%;
+}
+
+.form-custom {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-bottom: 1px solid #ced4da;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+/* .signup-contents {
+    position: fixed;
+    height: 70%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

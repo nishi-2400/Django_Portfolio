@@ -1,0 +1,143 @@
+{% extends 'restaurant-base.html' %}
+{% block title %}Restaurant Report{% endblock %}
+
+
+{% block script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+{% endblock %}
+
+{% block sidebar %}{% endblock %}
+
+
+{% block page_title %}Report{% endblock page_title %}
+{% block page_body %}
+    <div class="row justify-content-center">
+        <div class="col-7 card m-2">
+            <div class="card-header contents-child-header">
+                <h4 class="contents-title">Weekly Sales</h4>
+            </div>
+            <div class="card-body">
+                <canvas id="weekly-sales" height="100"></canvas>
+                <script>
+                    var ctx1 = document.getElementById("weekly-sales").getContext("2d")
+                    var data = {
+                        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+                        datasets: [{
+                        label: "Weekly Sales",
+                        backgroundColor: [
+                            'rgba(255, 99, 132)',
+                            'rgba(54, 162, 235)',
+                            'rgba(255, 206, 86)',
+                            'rgba(75, 192, 192)',
+                            'rgba(29, 32, 136)',
+                            'rgba(153, 102, 255)',
+                            'rgba(255, 159, 64)',
+                            'rgba(255, 159, 64)',
+                        ],
+                        data: {{ weekly_sales }},
+                            }]
+                    };
+                    new Chart(ctx1, {
+                        type: 'bar',
+                        data: data
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div class="col-4 card m-2">
+            <div class="card-header contents-child-header">
+                <h4 class="contents-title">Top 3 Meals</h4>
+            </div>
+
+            <div class="card-body">
+                <canvas id="top-3-meals" height="170"></canvas>
+                <script>
+                    var ctx2 = document.getElementById("top-3-meals").getContext("2d")
+                    var data = {
+                        labels: {{ meal_data.labels|safe }},
+                        datasets: [{
+                        label: "Sample Data1",
+                        backgroundColor: [
+                            'rgba(255, 99, 132)',
+                            'rgba(54, 162, 235)',
+                            'rgba(255, 206, 86)',
+                        ],
+                        data: {{ meal_data.data }},
+                        }]
+                    };
+                    new Chart(ctx2, {
+                        type: 'doughnut',
+                        data: data
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-7 card m-2">
+            <div class="card-header contents-child-header">
+                <h4 class="contents-title">Weekly Orders</h4>
+            </div>
+            <div class="card-body">
+                <canvas id="weekly-orders" height="100"></canvas>
+                <script>
+                    var ctx3 = document.getElementById("weekly-orders").getContext("2d")
+                    var data = {
+                        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+                        datasets: [{
+                        label: "Weekly Orders",
+                        backgroundColor: [
+                            'rgba(255, 99, 132)',
+                            'rgba(54, 162, 235)',
+                            'rgba(255, 206, 86)',
+                            'rgba(75, 192, 192)',
+                            'rgba(29, 32, 136)',
+                            'rgba(153, 102, 255)',
+                            'rgba(255, 159, 64)',
+                            'rgba(255, 159, 64)',
+                        ],
+                        data: {{ weekly_orders }},
+                            }]
+                    };
+                    new Chart(ctx3, {
+                        type: 'bar',
+                        data: data
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div class="col-4 card m-2">
+            <div class="card-header contents-child-header">
+                <h4 class="contents-title">Top3 Drivers</h4>
+            </div>
+            <div class="card-body">
+                <canvas id="top-3-drivers" height="170"></canvas>
+                <script>
+                    var ctx4 = document.getElementById("top-3-drivers").getContext("2d")
+                    var data = {
+                        labels: {{ driver_data.labels|safe }},
+                        datasets: [{
+                        label: "Top3 Drivers",
+                        backgroundColor: [
+                            'rgba(255, 99, 132)',
+                            'rgba(54, 162, 235)',
+                            'rgba(255, 206, 86)',
+                        ],
+                        data: {{ driver_data.data }},
+                        }]
+                    };
+                    new Chart(ctx4, {
+                        type: 'doughnut',
+                        data: data
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+{% endblock page_body %}
+
+{% block page %}
+{% endblock %}
