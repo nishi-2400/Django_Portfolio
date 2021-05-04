@@ -4,7 +4,7 @@
 # DEMO  
 <img width="1636" alt="うーばぁ・いいなぁ" src="https://user-images.githubusercontent.com/55306345/76379548-b5d1f680-6393-11ea-82a3-ac5e92d6e4de.png">
 <img width="1673" alt="slider_02" src="https://user-images.githubusercontent.com/55306345/76379568-c1252200-6393-11ea-953b-90ce2a7672d4.png">
-
+<img width="1673" alt="slider_02" src="https://user-images.githubusercontent.com/55306345/116999069-16e82680-ad1a-11eb-9b9f-a7b217d07e0f.jpg">
 
 # Description  
 ”UberEats"を参考にして作成したフードデリバリーサービスWebアプリケーション。  
